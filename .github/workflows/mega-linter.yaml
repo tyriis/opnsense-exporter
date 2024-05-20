@@ -1,0 +1,29 @@
+---
+name: MegaLinter
+
+on:
+  push:
+    branches:
+      - "**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: MegaLinter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        with:
+          fetch-depth: 0
+
+      - name: MegaLinter
+        uses: oxsecurity/megalinter/flavors/javascript@03986e6993ccf699a22451118520680b438e7d2a # v7.11.1
+        env:
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'workflow_dispatch' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_STATUS_REPORTER only works if VALIDATE_ALL_CODEBASE is false!
+          GITHUB_STATUS_REPORTER: true
+          REPORTERS_MARKDOWN_TYPE: simple
+          SHOW_ELAPSED_TIME: false
+          SHOW_SKIPPED_LINTERS: true
