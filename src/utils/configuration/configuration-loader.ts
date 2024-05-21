@@ -43,6 +43,7 @@ export const configurationLoader = () => {
   const config = YAML.parse(fs.readFileSync(CONFIG_PATH, "utf8")) as Record<string, unknown>
   // replace all matches of ${env} with the actual environment variable
   replaceEnvVars(config)
+  logger.log(`config: ${JSON.stringify(config)}`)
   // as we can not validate our config over the build in config validator, we need to do it here
   const validatedConfig = validate(config)
   // inject npm values
