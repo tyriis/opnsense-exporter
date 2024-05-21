@@ -51,9 +51,9 @@ app:
   pretty: true
 
 opnsense:
-  url: ${OPNSENSE_URL}
-  apiKey: ${OPNSENSE_API_KEY}
-  apiSecret: ${OPNSENSE_API_SECRET}
+  url: ${env.OPNSENSE_URL}
+  apiKey: ${env.OPNSENSE_API_KEY}
+  apiSecret: ${env.OPNSENSE_API_SECRET}
 ```
 
 ## Running the app
