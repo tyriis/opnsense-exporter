@@ -12,7 +12,7 @@ export class AppService implements BeforeApplicationShutdown {
   private readonly logger = new Logger(AppService.name)
 
   constructor(
-    @InjectMetric("opnsense_dhvp4_lease") public gauge: Gauge<string>,
+    @InjectMetric("opnsense_dhcpv4_lease") public gauge: Gauge<string>,
     private configService: ConfigService,
   ) {}
 

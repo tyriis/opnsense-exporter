@@ -15,7 +15,7 @@ describe("AppController", () => {
       providers: [
         AppService,
         makeGaugeProvider({
-          name: "opnsense_dhvp4_lease",
+          name: "opnsense_dhcpv4_lease",
           help: "OPNsense DHCPv4 lease online status",
           labelNames: ["address", "mac", "hostname"],
         }),
