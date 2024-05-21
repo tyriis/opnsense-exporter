@@ -41,6 +41,8 @@ pnpm install
 
 You can pass `CONFIG_PATH` env variable to point to your `configuration.yaml`. Default path is `$(XDG_CONFIG_HOME)/opnsense-exporter/configuration.yaml`
 
+You can use env variables as placeholder in the configuration.yaml
+
 ```yaml
 ---
 app:
@@ -49,9 +51,9 @@ app:
   pretty: true
 
 opnsense:
-  url: https://opnsense.home
-  apiKey: my-secret-api-key
-  apiSecret: my-secret-api-secret
+  url: ${OPNSENSE_URL}
+  apiKey: ${OPNSENSE_API_KEY}
+  apiSecret: ${OPNSENSE_API_SECRET}
 ```
 
 ## Running the app
