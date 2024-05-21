@@ -1,6 +1,6 @@
 {
   "name": "opnsense-exporter",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A prometheus exporter for opnsense dhcp ipv4 leases written in typescript with NestJS.",
   "author": "Nils Müller<me@tyriis.dev>",
   "private": false,
