@@ -39,8 +39,8 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       joi:
-        specifier: 17.13.2
-        version: 17.13.2
+        specifier: 17.13.3
+        version: 17.13.3
       node-fetch:
         specifier: 3.3.2
         version: 3.3.2
@@ -1964,8 +1964,8 @@ packages:
       node-notifier:
         optional: true
 
-  joi@17.13.2:
-    resolution: {integrity: sha512-QJQKY10YowIi6yUpDQG9YpeWLD+OHYlY/La8gk7VitrXfy34quHwCu4QKNlBV1rpgQj0YpnWWl4JM+3DU6GapQ==}
+  joi@17.13.3:
+    resolution: {integrity: sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -5300,7 +5300,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  joi@17.13.2:
+  joi@17.13.3:
     dependencies:
       '@hapi/hoek': 9.3.0
       '@hapi/topo': 5.1.0
