@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common'
+import { Module } from "@nestjs/common"
 import { ConfigModule, ConfigService } from "@nestjs/config"
 import { configurationLoader } from "./configuration-loader"
 import { envValidationSchema } from "./configuration.schema"
@@ -13,7 +13,7 @@ import { envValidationSchema } from "./configuration.schema"
         abortEarly: true,
       },
       isGlobal: true, // Make configuration globally available
-    })
+    }),
   ],
   providers: [ConfigService],
   exports: [ConfigService], // Export ConfigService to make it available to other modules
