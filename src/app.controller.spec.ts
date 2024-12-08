@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 
 describe('AppController', () => {
   let controller: AppController;
-  let service: AppService;
 
   const mockAppService = {
     getIdentifier: jest.fn(),
