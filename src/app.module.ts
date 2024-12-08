@@ -2,11 +2,11 @@ import { Module } from "@nestjs/common"
 import { PrometheusModule, makeGaugeProvider } from "@willsoto/nestjs-prometheus"
 import { AppController } from "./app.controller"
 import { AppService } from "./app.service"
-import { configurationModule } from "./utils/configuration/configuration.module"
+import { ConfigurationModule } from "./utils/configuration/configuration.module"
 import { ScheduleModule } from "@nestjs/schedule"
 
 @Module({
-  imports: [configurationModule, PrometheusModule.register(), ScheduleModule.forRoot()],
+  imports: [ConfigurationModule, PrometheusModule.register(), ScheduleModule.forRoot()],
   controllers: [AppController],
   providers: [
     AppService,

@@ -1,38 +1,63 @@
-import { Test, TestingModule } from "@nestjs/testing"
-import { AppController } from "./app.controller"
-import { AppService } from "./app.service"
-import { ConfigModule } from "@nestjs/config"
-import { makeGaugeProvider } from "@willsoto/nestjs-prometheus"
-import { ScheduleModule } from "@nestjs/schedule"
+import 'reflect-metadata';
+import { Test, TestingModule } from '@nestjs/testing';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
-describe("AppController", () => {
-  let appController: AppController
+describe('AppController', () => {
+  let controller: AppController;
+  let service: AppService;
+
+  const mockAppService = {
+    getIdentifier: jest.fn(),
+  };
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot(), ScheduleModule.forRoot()],
+    const module: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
       providers: [
-        AppService,
-        makeGaugeProvider({
-          name: "opnsense_dhcpv4_lease",
-          help: "OPNsense DHCPv4 lease online status",
-          labelNames: ["address", "mac", "hostname"],
-        }),
+        {
+          provide: AppService,
+          useValue: mockAppService,
+        },
       ],
-    }).compile()
+    }).compile();
 
-    appController = app.get<AppController>(AppController)
-  })
+    controller = module.get<AppController>(AppController);
+  });
 
-  describe("root", () => {
-    it("should return `{ service: unknown, version: unknown }`", () => {
-      expect(appController.getIdentifier()).toStrictEqual({ service: undefined, version: undefined })
-    })
-  })
-  describe("health", () => {
-    it('should return "Service operating normally."', () => {
-      expect(appController.getHealth()).toBe("Service operating normally.")
-    })
-  })
-})
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  describe('getIdentifier', () => {
+    it('should return service identifier from AppService', () => {
+      const expectedResult = { name: 'test-service', version: '1.0.0' };
+      mockAppService.getIdentifier.mockReturnValue(expectedResult);
+
+      const result = controller.getIdentifier();
+
+      expect(result).toBe(expectedResult);
+      expect(mockAppService.getIdentifier).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('getHealth', () => {
+    it('should return health status message', () => {
+      const result = controller.getHealth();
+      expect(result).toBe('Service operating normally.');
+    });
+
+    it('should return with status 200', () => {
+      const metadata = Reflect.getMetadata('__httpCode__', controller.getHealth);
+      expect(metadata).toBe(200);
+    });
+
+    it('should return with correct content type header', () => {
+      const metadata = Reflect.getMetadata('__headers__', controller.getHealth);
+      expect(metadata).toEqual([{
+        name: 'Content-Type',
+        value: 'text/plain; charset=utf-8'
+      }]);
+    });
+  });
+});

@@ -20,7 +20,7 @@ export class AppController {
    * @returns {string} The health check message.
    */
   @Get("/health")
-  @Header("Content-Type", "text/plain;charset=utf-8")
+  @Header("Content-Type", "text/plain; charset=utf-8")
   @HttpCode(200)
   getHealth(): string {
     return "Service operating normally."
