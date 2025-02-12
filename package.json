@@ -24,7 +24,7 @@
     "@nestjs/config": "4.0.0",
     "@nestjs/core": "11.0.8",
     "@nestjs/platform-express": "11.0.8",
-    "@nestjs/schedule": "4.1.2",
+    "@nestjs/schedule": "5.0.1",
     "@nestjs/swagger": "11.0.3",
     "@willsoto/nestjs-prometheus": "6.0.2",
     "class-transformer": "0.5.1",
