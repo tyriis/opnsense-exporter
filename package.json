@@ -77,7 +77,7 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "packageManager": "pnpm@10.5.1",
+  "packageManager": "pnpm@10.5.2",
   "pnpm": {
     "overrides": {
       "braces@<3.0.3": "3.0.3",
